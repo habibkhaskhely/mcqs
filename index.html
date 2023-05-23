@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Login</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+        }
+    
+        .container {
+          max-width: 400px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #ffffff;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          top: 50%;
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+        }
+    
+        .container h2 {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+    
+        .form-group {
+          margin-bottom: 20px;
+        }
+    
+        .form-group label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+    
+        .form-group input {
+          width: 95%;
+          padding: 10px;
+          border-radius: 3px;
+          border: 1px solid #ccc;
+        }
+    
+        .form-group button {
+          width: 100%;
+          padding: 10px;
+          background-color: #4CAF50;
+          color: #ffffff;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+    
+        .form-group button:hover {
+          background-color: #45a049;
+        }
+      </style>
+    </head>
+    <body>
+        <div class="container" id="signupForm">
+            <h2>Sign Up</h2>
+           
+              <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="signUpName" name="username" placeholder="Enter your username">
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="signUpPassword" name="password" placeholder="Enter your password">
+              </div>
+              <div class="form-group">
+                <button onclick="signUp()">Register</button>
+              </div>
+          
+          </div>
+      <div class="container" id="loginForm" style="display: none;">
+        <h2>Login</h2>
+    
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+          </div>
+          <div class="form-group">
+            <button onclick="signIn()">Login</button>
+          </div>
+   
+      </div>
+
+      <!-- START QUESTION -->
+      <div id="questionDiv" style="display: none;">
+        <h3>What does CSS stand for?</h3>
+         <div id="answers">
+           
+            <p>
+                <input type="checkbox" id="cascading3" name="vehicle1" value="Computer Style Sheets">
+                <label for="vehicle1"> Computer Style Sheets</label><br>
+            </p>
+            <p>
+                <input type="checkbox" id="cascading2" name="vehicle1" value="Creative Style Sheets">
+                <label for="vehicle1"> Creative Style Sheets</label><br>
+            </p>
+            <p>
+                <input type="checkbox" id="cascading" name="vehicle1" value="Cascading Style Sheets">
+                <label for="vehicle1"> Cascading Style Sheets</label><br>
+            </p>
+            <button onclick="mcqbox()">Submit </button>
+         </div>
+      </div>
+    </body>
+    </html>
+    <script>
+        let signupForm = document.getElementById("signupForm");
+        let loginForm = document.getElementById("loginForm");
+        
+        function signUp(){
+            let signUpName = document.getElementById("signUpName").value;
+        let signUpPassword = document.getElementById("signUpPassword").value;
+        alert("congratulations you have created your Login account \n your user Name: "+ signUpName + "\nPassword: " + signUpPassword )
+        signupForm.style.display = "none";
+        loginForm.style.display = "block";
+        localStorage.setItem("name", signUpName); 
+        localStorage.setItem("password", signUpPassword);        
+        }
+        
+        function signIn(){
+            const storedName = localStorage.getItem("name");
+            const storedPassword = localStorage.getItem("password");
+            let userName = document.getElementById("username").value;
+            let userPassword = document.getElementById("password").value;
+            if( storedName==userName && storedPassword==userPassword ){
+                alert("your user is correct: " + userName)
+                loginForm.style.display = "none";
+            questionDiv.style.display = "block";
+            }
+            else {alert("Plz try again ")}
+            
+        }
+        function mcqbox(){
+            let q1Correct = document.getElementById("cascading").value;
+            if (q1Correct === "Cascading Style Sheets"){
+            alert(q1Correct)
+        }
+        else{alert("plz try again")}
+        }
+
+
+    </script>
+
+</body>
+</html>
